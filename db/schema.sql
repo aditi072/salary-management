@@ -87,23 +87,3 @@ FROM employees e
 JOIN countries c ON c.code = e.country_code
 JOIN departments d ON d.id = e.department_id
 JOIN salaries s ON s.employee_id = e.id;
-
-INSERT INTO countries (code, name, currency_code) VALUES
-  ('IN', 'India', 'INR'),
-  ('US', 'United States', 'USD'),
-  ('GB', 'United Kingdom', 'GBP'),
-  ('DE', 'Germany', 'EUR'),
-  ('SG', 'Singapore', 'SGD'),
-  ('AE', 'United Arab Emirates', 'AED');
-
-INSERT INTO departments (name) VALUES
-  ('Engineering'),
-  ('Product'),
-  ('Design'),
-  ('People'),
-  ('Finance'),
-  ('Sales'),
-  ('Marketing'),
-  ('Operations'),
-  ('Customer Support'),
-  ('Legal');
