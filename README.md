@@ -5,5 +5,6 @@ Web application for an HR manager to maintain current salaries for about 10,000 
 - Requirements: [docs/requirements.md](docs/requirements.md)
 - Database: [docs/database.md](docs/database.md)
 - API: [docs/backend.md](docs/backend.md)
+- Screens: [docs/frontend.md](docs/frontend.md)
 
 Stack for this solution: Java (Spring Boot), Angular, MySQL 8.

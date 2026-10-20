@@ -1,0 +1,71 @@
+<section class="page">
+  <h1>How ACME pays people</h1>
+  @if (error()) {
+    <p>{{ error() }}</p>
+  }
+  @if (summary(); as pay) {
+    <p>{{ pay.paidHeadcount }} people are active or on leave. Terminated employees are excluded. Totals are never mixed across currencies.</p>
+    <div class="cards">
+      @for (row of pay.byCurrency; track row.currencyCode) {
+        <article>
+          <h2>{{ row.currencyCode }}</h2>
+          <p>{{ row.headcount }} people</p>
+          <p>Total {{ money(row.totalAmount, row.currencyCode) }}</p>
+          <p>Average {{ money(row.averageAmount, row.currencyCode) }}</p>
+        </article>
+      }
+    </div>
+
+    <h2 class="section-title">By country</h2>
+    <table mat-table [dataSource]="pay.byCountry">
+      <ng-container matColumnDef="countryName">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let row">{{ row.countryName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="currencyCode">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let row">{{ row.currencyCode }}</td>
+      </ng-container>
+      <ng-container matColumnDef="headcount">
+        <th mat-header-cell *matHeaderCellDef>People</th>
+        <td mat-cell *matCellDef="let row">{{ row.headcount }}</td>
+      </ng-container>
+      <ng-container matColumnDef="totalAmount">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let row" class="money">{{ money(row.totalAmount, row.currencyCode) }}</td>
+      </ng-container>
+      <ng-container matColumnDef="averageAmount">
+        <th mat-header-cell *matHeaderCellDef>Average</th>
+        <td mat-cell *matCellDef="let row" class="money">{{ money(row.averageAmount, row.currencyCode) }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="countryColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: countryColumns"></tr>
+    </table>
+
+    <h2 class="section-title">By department</h2>
+    <table mat-table [dataSource]="pay.byDepartment">
+      <ng-container matColumnDef="departmentName">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td mat-cell *matCellDef="let row">{{ row.departmentName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="currencyCode">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let row">{{ row.currencyCode }}</td>
+      </ng-container>
+      <ng-container matColumnDef="headcount">
+        <th mat-header-cell *matHeaderCellDef>People</th>
+        <td mat-cell *matCellDef="let row">{{ row.headcount }}</td>
+      </ng-container>
+      <ng-container matColumnDef="totalAmount">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let row" class="money">{{ money(row.totalAmount, row.currencyCode) }}</td>
+      </ng-container>
+      <ng-container matColumnDef="averageAmount">
+        <th mat-header-cell *matHeaderCellDef>Average</th>
+        <td mat-cell *matCellDef="let row" class="money">{{ money(row.averageAmount, row.currencyCode) }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="departmentColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: departmentColumns"></tr>
+    </table>
+  }
+</section>
