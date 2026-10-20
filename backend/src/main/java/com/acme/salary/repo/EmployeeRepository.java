@@ -15,6 +15,11 @@ import com.acme.salary.domain.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>, JpaSpecificationExecutor<Employee> {
 
+	@org.springframework.data.jpa.repository.Query("""
+			select max(e.employeeCode) from Employee e where e.employeeCode like 'EMP%'
+			""")
+	String maxSeedCode();
+
 	boolean existsByEmailIgnoreCase(String email);
 
 	boolean existsByEmployeeCodeIgnoreCase(String employeeCode);

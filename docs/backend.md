@@ -16,11 +16,20 @@ A salary of zero or less is rejected. A duplicate email or employee code is reje
 
 ## Run
 
-Set the MySQL password, then start the API from `backend`:
+From `backend`, copy `application-local.properties.example` to `application-local.properties` and put the Workbench password in the copy. That copy is ignored by git. The username defaults to `root`. Override it with `MYSQL_USER` if Workbench uses a different account.
 
 ```powershell
-$env:MYSQL_PASSWORD = "the-password-you-type-in-Workbench"
 .\mvnw.cmd spring-boot:run
 ```
 
-The username defaults to `root`. Override it with `MYSQL_USER` if Workbench uses a different account.
+## Seed
+
+With the country and department rows already loaded, insert 10,000 employees and their current salaries:
+
+Copy `application-local.properties.example` to `application-local.properties` and put the Workbench password there. That file stays on this machine.
+
+```powershell
+.\mvnw.cmd spring-boot:run "-Dspring-boot.run.profiles=seed"
+```
+
+The command exits when the insert finishes. It adds people until the directory holds 10,000, and leaves anyone already there in place. A later run does nothing once that number is reached. Seeded codes run from `EMP00001` upward. Currency always matches the employee's country. About 5% are terminated and are left out of pay totals.
