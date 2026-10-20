@@ -1,8 +1,18 @@
 # Backend
 
-Java 21, Spring Boot, MySQL. The API is the desk the HR manager will use. The Angular screens come next and will call these addresses.
+Java 21, Spring Boot, MySQL. The Angular screens call these addresses.
 
 The tables already exist. The application does not create or alter them (`spring.jpa.hibernate.ddl-auto=none`).
+
+## Sign-in
+
+One HR account. The local demo username is `hr` and the password is `hr-demo`. Change `app.hr.password` before any shared deployment. A session cookie is issued at login. Requests that change data also send the CSRF cookie Angular already understands.
+
+- `POST /api/login` with `username` and `password`
+- `GET /api/me`
+- `POST /api/logout`
+
+Every other `/api` address requires that session.
 
 ## Addresses
 

@@ -1,7 +1,10 @@
 <mat-toolbar color="primary">
   <span>ACME Salary</span>
   <span class="grow"></span>
-  <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Directory</a>
-  <a mat-button routerLink="/summary" routerLinkActive="active">Pay summary</a>
+  @if (session.username()) {
+    <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Directory</a>
+    <a mat-button routerLink="/summary" routerLinkActive="active">Pay summary</a>
+    <button mat-button type="button" (click)="signOut()">Sign out</button>
+  }
 </mat-toolbar>
 <router-outlet />

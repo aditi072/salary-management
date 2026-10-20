@@ -1,0 +1,18 @@
+<section class="login">
+  <h1>ACME Salary</h1>
+  <p>Sign in as the HR manager.</p>
+  <form [formGroup]="form" (ngSubmit)="signIn()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" autocomplete="username" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" autocomplete="current-password" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit">Sign in</button>
+  </form>
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+</section>

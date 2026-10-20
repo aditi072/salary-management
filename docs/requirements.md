@@ -10,6 +10,7 @@ One HR manager. Employees do not sign in. This version has a single role.
 
 ## In scope
 
+- Sign in as the one HR manager. Salary data is not readable until that sign-in succeeds.
 - An employee directory with the current salary: employee code, name, email, country, department, job title, employment status, hire date, salary amount, currency, and the date that salary took effect.
 - Search by name or employee code.
 - Filter by country, department, employment status, and salary range.

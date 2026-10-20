@@ -1,0 +1,17 @@
+.login {
+  max-width: 360px;
+  margin: 64px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error {
+  color: #b3261e;
+}

@@ -8,7 +8,7 @@ From `frontend`, with the API already running:
 npm start
 ```
 
-Open http://localhost:4200.
+Open http://localhost:4200. Sign in as `hr` / `hr-demo`.
 
 - Directory: search, filter, and page through employees. Open a code to edit that person.
 - Add employee: currency is chosen by the country, on the server.

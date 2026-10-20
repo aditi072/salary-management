@@ -56,4 +56,16 @@ export class SalaryApi {
   summary(): Observable<PaySummary> {
     return this.http.get<PaySummary>('/api/summary');
   }
+
+  login(username: string, password: string): Observable<{ username: string }> {
+    return this.http.post<{ username: string }>('/api/login', { username, password });
+  }
+
+  me(): Observable<{ username: string }> {
+    return this.http.get<{ username: string }>('/api/me');
+  }
+
+  logout(): Observable<void> {
+    return this.http.post<void>('/api/logout', {});
+  }
 }
